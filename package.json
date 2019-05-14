@@ -1,0 +1,15 @@
+{
+  "name": "wetube-handson",
+  "version": "1.0.0",
+  "description": "Cloning Youtube with Vanilla with NodeJS",
+  "main": "index.js",
+  "author": "kneeprayer",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
