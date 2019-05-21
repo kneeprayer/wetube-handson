@@ -9,15 +9,7 @@ import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
 const app = express();
 
-const handleHome = (req, res) => res.send("Hello from home");
-
-const handleProfile = (req, res) => res.send("You are on my profile");
-
-const betweenHome = (req, res, next) => {
-    console.log("Between");
-    next();
-};
-
+app.set("view engine", "pug");
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
