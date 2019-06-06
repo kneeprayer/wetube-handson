@@ -4,11 +4,11 @@ Cloning Youtube with Vanilla with NodeJS.
 
 [[초급 풀스택] 유튜브 클론 코딩](https://academy.nomadcoders.co/courses/435438)
 
-## Pages:
+## Pages
 
 -   [ ] Home
--   [ ] Join
--   [ ] Login
+-   [x] Join
+-   [x] Login
 -   [x] Search
 -   [ ] User Detail
 -   [ ] Edit Profile
