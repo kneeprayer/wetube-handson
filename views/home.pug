@@ -4,8 +4,9 @@ include mixins/videoBlock
 block content
     .videos
         each item in videos
-            videoBlock({
-            p= item.description 	                title:item.title,
+            +videoBlock({
+                id:item.id,
+                title:item.title,
                 views:item.views,
                 videoFile:item.videoFile
             })
