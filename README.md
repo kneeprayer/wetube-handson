@@ -40,9 +40,16 @@ Cloning Youtube with Vanilla with NodeJS.
 5. For Mac and Linux user : `chmod 755 bin/*.sh`
 6. docker-compose up -d
 
-## Login to Django container
+## Login to container
 
--   `sudo docker exec -i -t /bin/bash`
+### Login to nodejs container
+
+-   `sudo docker exec -it app /bin/bash`
+
+### Login to mongodb container and use MongoDB shell
+
+-   `sudo docker exec -it mongodb /bin/bash`
+-   `mongo`
 
 ## How to use it
 
