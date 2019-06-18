@@ -40,7 +40,7 @@ Cloning Youtube with Vanilla with NodeJS.
 5. For Mac and Linux user : `chmod 755 bin/*.sh`
 6. docker-compose up -d
 
-## Login to container
+## Container shell access
 
 ### Login to nodejs container
 
@@ -50,6 +50,17 @@ Cloning Youtube with Vanilla with NodeJS.
 
 -   `sudo docker exec -it mongodb /bin/bash`
 -   `mongo`
+
+## Viewing container logs
+
+### nodejs container logs
+
+-   `sudo docker logs app`
+
+### mongodb container logs
+
+-   The MongoDB Server log is available through Docker's container log:
+-   `sudo docker logs mongodb`
 
 ## How to use it
 
