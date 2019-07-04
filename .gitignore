@@ -95,3 +95,8 @@ Temporary Items
 
 # MongoDB
 mongodb-data/
+
+# yarn
+yarn.lock
+
+uploads
