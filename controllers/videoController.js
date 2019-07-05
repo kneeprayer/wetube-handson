@@ -51,7 +51,6 @@ export const postUpload = async (req, res) => {
 // Video Detail
 
 export const videoDetail = async (req, res) => {
-  res.render("videoDetail", { pageTitle: "Video Detail" });
   const {
     params: { id }
   } = req;
@@ -66,7 +65,6 @@ export const videoDetail = async (req, res) => {
 // Edit Video
 
 export const getEditVideo = async (req, res) => {
-  res.render("editVideo", { pageTitle: "Edit Video" });
   const {
     params: { id }
   } = req;
@@ -94,7 +92,6 @@ export const postEditVideo = async (req, res) => {
 // Delete Video
 
 export const deleteVideo = async (req, res) => {
-  res.render("deleteVideo", { pageTitle: "Delete Video" });
   const {
     params: { id }
   } = req;
