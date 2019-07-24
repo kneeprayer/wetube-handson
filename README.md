@@ -72,7 +72,7 @@ Cloning Youtube with Vanilla with NodeJS.
 -   Stop Docker containers `bin/stop-server.sh`
 -   Build Docker containers `bin/create-server.sh`
 -   Delete Docker containers `bin/delete-server.sh`
--   If you want to delete MySQL database file also, you should remove data volume using `docker volume rm mongodb-data`
+-   If you want to delete Mongo data files also, you should remove data files using `rm -rf mongodb-data`
 
 ### for Windows user
 
