@@ -10,3 +10,4 @@ yarn.lock
 bin/
 mongodb-data/
 uploads/
+static/
