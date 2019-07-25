@@ -7,7 +7,6 @@ services:
       - ./mongodb-data:/data/db
     ports:
       - 27017:27017
-    command: mongod --replSet myDevReplSet
   app:
     build:
       context: .
@@ -15,11 +14,21 @@ services:
     container_name: app
     depends_on:
         - mongodb
-    command: yarn start
+        - web
+    command: yarn dev:start
     environment:
       NODE_ENV: development
     ports:
       - '4000:4000'
     volumes:
       - .:/app
-      - ./uploads:/app/uploads
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: web
+    command: yarn dev:assets
+    environment:
+      NODE_ENV: development
+    volumes:
+      - .:/app
