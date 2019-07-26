@@ -3,15 +3,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const mongoUrl =
-  process.env.DEV_ENV === "development"
-    ? process.env.MONGO_URL
-    : process.env.MONGO_URL_PROD;
-
-mongoose.connect(mongoUrl, {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+mongoose.connect(
+  process.env.PRODUCTION ? process.env.MONGO_URL_PROD : process.env.MONGO_URL,
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false
+  }
+);
 
 const db = mongoose.connection;
 

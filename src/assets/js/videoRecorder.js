@@ -17,6 +17,7 @@ const handleVideoData = event => {
 const stopRecording = () => {
   videoRecorder.stop();
   recordBtn.removeEventListener("click", stopRecording);
+  // eslint-disable-next-line no-use-before-define
   recordBtn.addEventListener("click", getVideo);
   recordBtn.innerHTML = "Start recording";
 };

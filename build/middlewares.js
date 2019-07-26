@@ -24,14 +24,14 @@ var multerVideo = (0, _multer["default"])({
   storage: (0, _multerS["default"])({
     s3: s3,
     acl: "public-read",
-    bucket: "wetube-hanson/video"
+    bucket: "wetube-handson/video"
   })
 });
 var multerAvatar = (0, _multer["default"])({
   storage: (0, _multerS["default"])({
     s3: s3,
     acl: "public-read",
-    bucket: "wetube-hanson/avatar"
+    bucket: "wetube-handson/avatar"
   })
 });
 var uploadVideo = multerVideo.single("videoFile");

@@ -19,7 +19,7 @@ _passport["default"].use(_User["default"].createStrategy());
 _passport["default"].use(new _passportGithub["default"]({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.PRODUCTION ? "https://polar-sea-27980.herokuapp.com".concat(_routes["default"].githubCallback) : "http://localhost:4000".concat(_routes["default"].githubCallback)
+  callbackURL: process.env.PRODUCTION ? "".concat(process.env.PASSPORT_GITHUB_CALLBACK_URL, "/").concat(_routes["default"].githubCallback) : "http://localhost:4000".concat(_routes["default"].githubCallback)
 }, _userController.githubLoginCallback));
 
 _passport["default"].use(new _passportFacebook["default"]({
