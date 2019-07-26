@@ -7,6 +7,7 @@
     "license": "MIT",
     "private": true,
     "dependencies": {
+        "@babel/cli": "^7.5.5",
         "@babel/core": "^7.4.4",
         "@babel/node": "^7.2.2",
         "@babel/polyfill": "^7.4.4",
@@ -42,7 +43,7 @@
         "webpack-cli": "^3.3.6"
     },
     "scripts": {
-        "dev:server": "DEV_ENV=development nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static' ",
+        "dev:server": "PRODUCTION=false nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static' ",
         "dev:assets": "cd src && WEBPACK_ENV=development webpack -w",
         "build:assets": "cd src && WEBPACK_ENV=production webpack",
         "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
