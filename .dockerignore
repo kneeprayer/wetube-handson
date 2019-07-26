@@ -9,5 +9,5 @@ README.md
 yarn.lock
 bin/
 mongodb-data/
-uploads/
-static/
+/src/uploads/
+/src/static/

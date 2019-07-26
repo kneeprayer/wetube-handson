@@ -101,5 +101,5 @@ yarn.lock
 # npm
 package.lock
 
-uploads
-static
+src/uploads/
+src/static/
