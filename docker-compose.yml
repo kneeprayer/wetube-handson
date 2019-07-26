@@ -10,7 +10,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./src/Dockerfile
     container_name: app
     depends_on:
         - mongodb
@@ -21,14 +21,14 @@ services:
     ports:
       - '4000:4000'
     volumes:
-      - .:/app
+      - ./src:/app
   web:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./src/Dockerfile
     container_name: web
     command: yarn dev:assets
     environment:
       NODE_ENV: development
     volumes:
-      - .:/app
+      - ./src:/app
