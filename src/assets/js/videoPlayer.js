@@ -132,7 +132,7 @@ function init() {
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRange.addEventListener("input", handleDrag);
-  videoContainer.addEventListener("keypress", pressSpaceKey);
+  document.body.addEventListener("keypress", pressSpaceKey);
 }
 
 if (videoContainer) {
