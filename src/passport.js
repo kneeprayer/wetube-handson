@@ -16,7 +16,7 @@ passport.use(
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: process.env.PRODUCTION
-        ? `${process.env.PASSPORT_GITHUB_CALLBACK_URL}${routes.githubCallback}`
+        ? `${process.env.SERVER_URL}${routes.githubCallback}`
         : `http://localhost:4000${routes.githubCallback}`
     },
     githubLoginCallback
@@ -28,7 +28,9 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      callbackURL: `https://quiet-cat-12.localtunnel.me${routes.facebookCallback}`,
+      callbackURL: process.env.PRODUCTION
+        ? `${process.env.SERVER_URL}${routes.facebookCallback}`
+        : `http://localhost:4000${routes.facebookCallback}`,
       profileFields: ["id", "displayName", "photos", "email"],
       scope: ["public_profile", "email"]
     },
