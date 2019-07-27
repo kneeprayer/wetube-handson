@@ -16,13 +16,56 @@ const registerView = () => {
   });
 };
 
+const formatDate = seconds => {
+  const secondsNumber = parseInt(seconds, 10);
+  let hours = Math.floor(secondsNumber / 3600);
+  let minutes = Math.floor((secondsNumber - hours * 3600) / 60);
+  let totalSeconds = secondsNumber - hours * 3600 - minutes * 60;
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    totalSeconds = `0${totalSeconds}`;
+  }
+  return `${hours}:${minutes}:${totalSeconds}`;
+};
+
+function getCurrentTime() {
+  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
+}
+
+function setTotalTime() {
+  // async function setTotalTime() {
+  // const blob = await fetch(videoPlayer.src).then(response => response.blob());
+  // const duration = await getBlobDuration(blob);
+
+  if (videoPlayer.readyState > 0) {
+    const totalTimeString = formatDate(videoPlayer.duration);
+    totalTime.innerHTML = totalTimeString;
+    totalTime.innerHTML = totalTimeString;
+    clearInterval(setTotalTime);
+  }
+}
+
 function handlePlayClick() {
   if (videoPlayer.paused) {
     videoPlayer.play();
     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    setInterval(getCurrentTime, 1000);
   } else {
     videoPlayer.pause();
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    clearInterval(getCurrentTime);
+  }
+}
+
+function pressSpaceKey(e) {
+  if (e.keyCode === 32) {
+    handlePlayClick();
   }
 }
 
@@ -51,6 +94,7 @@ function exitFullScreen() {
   } else if (document.msExitFullscreen) {
     document.msExitFullscreen();
   }
+  document.body.removeEventListener("keypress", pressSpaceKey);
 }
 
 function goFullScreen() {
@@ -66,36 +110,7 @@ function goFullScreen() {
   fullScrnBtn.innerHTML = '<i class="fas fa-compress"></i>';
   fullScrnBtn.removeEventListener("click", goFullScreen);
   fullScrnBtn.addEventListener("click", exitFullScreen);
-}
-
-const formatDate = seconds => {
-  const secondsNumber = parseInt(seconds, 10);
-  let hours = Math.floor(secondsNumber / 3600);
-  let minutes = Math.floor((secondsNumber - hours * 3600) / 60);
-  let totalSeconds = secondsNumber - hours * 3600 - minutes * 60;
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  if (seconds < 10) {
-    totalSeconds = `0${totalSeconds}`;
-  }
-  return `${hours}:${minutes}:${totalSeconds}`;
-};
-
-function getCurrentTime() {
-  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
-}
-
-async function setTotalTime() {
-  // const blob = await fetch(videoPlayer.src).then(response => response.blob());
-  // const duration = await getBlobDuration(blob);
-  const totalTimeString = formatDate(videoPlayer.duration);
-  totalTime.innerHTML = totalTimeString;
-  setInterval(getCurrentTime, 1000);
+  document.body.addEventListener("keypress", pressSpaceKey);
 }
 
 function handleEnded() {
@@ -118,21 +133,15 @@ function handleDrag(event) {
   }
 }
 
-function pressSpaceKey(e) {
-  if (e.keyCode === 32) {
-    handlePlayClick();
-  }
-}
-
 function init() {
   videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScrnBtn.addEventListener("click", goFullScreen);
-  videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRange.addEventListener("input", handleDrag);
-  document.body.addEventListener("keypress", pressSpaceKey);
+  // videoPlayer.addEventListener("loadedmetadata", setTotalTime);
+  setInterval(setTotalTime, 500);
 }
 
 if (videoContainer) {
