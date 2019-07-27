@@ -1,0 +1,7 @@
+{
+    "name": "wetube-handson",
+    "description": "kneeprayer",
+    "repository": "https://github.com/kneeprayer/wetube-handson",
+    "logo": "https://rawgit.com/heroku/node-js-sample/master/public/node.svg",
+    "keywords": ["node", "express", "static"]
+}
