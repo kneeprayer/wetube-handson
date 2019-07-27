@@ -20,9 +20,7 @@ function handlePlayClick() {
   if (videoPlayer.paused) {
     videoPlayer.play();
     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-    volumeRange.value = videoPlayer.volume;
   } else {
-    volumeRange.value = 0;
     videoPlayer.pause();
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
   }
@@ -32,7 +30,9 @@ function handleVolumeClick() {
   if (videoPlayer.muted) {
     videoPlayer.muted = false;
     volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    volumeRange.value = videoPlayer.volume;
   } else {
+    volumeRange.value = 0;
     videoPlayer.muted = true;
     volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
   }
@@ -91,8 +91,13 @@ function getCurrentTime() {
 }
 
 async function setTotalTime() {
-  const blob = await fetch(videoPlayer.src).then(response => response.blob());
-  const duration = await getBlobDuration(blob);
+  let duration;
+  if (!isFinite(videoPlayer.duration)) {
+    const blob = await fetch(videoPlayer.src).then(response => response.blob());
+    duration = await getBlobDuration(blob);
+  } else {
+    duration = videoPlayer.duration;
+  }
   const totalTimeString = formatDate(duration);
   totalTime.innerHTML = totalTimeString;
   setInterval(getCurrentTime, 1000);
@@ -128,8 +133,6 @@ function init() {
   volumeRange.addEventListener("input", handleDrag);
 }
 
-window.onload = () => {
-  if (videoContainer) {
-    init();
-  }
-};
+if (videoContainer) {
+  init();
+}
