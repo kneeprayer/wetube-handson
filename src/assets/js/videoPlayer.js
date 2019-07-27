@@ -1,4 +1,4 @@
-import getBlobDuration from "get-blob-duration";
+// import getBlobDuration from "get-blob-duration";
 
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
@@ -91,9 +91,9 @@ function getCurrentTime() {
 }
 
 async function setTotalTime() {
-  const blob = await fetch(videoPlayer.src).then(response => response.blob());
-  const duration = await getBlobDuration(blob);
-  const totalTimeString = formatDate(duration);
+  // const blob = await fetch(videoPlayer.src).then(response => response.blob());
+  // const duration = await getBlobDuration(blob);
+  const totalTimeString = formatDate(videoPlayer.duration);
   totalTime.innerHTML = totalTimeString;
   setInterval(getCurrentTime, 1000);
 }
@@ -118,6 +118,12 @@ function handleDrag(event) {
   }
 }
 
+function pressSpaceKey(e) {
+  if (e.keyCode === 32) {
+    handlePlayClick();
+  }
+}
+
 function init() {
   videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
@@ -126,6 +132,7 @@ function init() {
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRange.addEventListener("input", handleDrag);
+  videoContainer.addEventListener("keypress", pressSpaceKey);
 }
 
 if (videoContainer) {
