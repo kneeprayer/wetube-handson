@@ -164,17 +164,17 @@ export const postAddComment = async (req, res) => {
   }
 };
 
-// Delete Video
+// Delete Comment
 
 export const postDeleteComment = async (req, res) => {
   const {
-    params: { id },
+    // params: { id },
     body: { commentId }
   } = req;
   try {
-    const video = await Video.findById(id);
+    // const video = await Video.findById(id);
     await Comment.findOneAndRemove({ _id: commentId });
-    await Video.findOneAndRemove({ _id: video.id });
+    // await Video.findOneAndRemove({ _id: video.commentId });
   } catch (error) {
     console.log(error);
   }
