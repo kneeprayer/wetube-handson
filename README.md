@@ -1,3 +1,14 @@
+&nbsp;&nbsp;&nbsp;&nbsp;
+![Javascript](https://img.shields.io/badge/Javascript-blue.svg)
+![Express](https://img.shields.io/badge/Express-brightgreen.svg)
+![MongoDB atlas](https://img.shields.io/badge/MongoDB-atlas-ff69b4.svg)
+![AWSS3](https://img.shields.io/badge/AWS-S3-lightgrey.svg)
+![Heroku](https://img.shields.io/badge/Server-Heroku-blue.svg)
+![Webpack](https://img.shields.io/badge/Webpack-purple.svg)
+![Babel](https://img.shields.io/badge/Babel-bb2f2a.svg)
+![Pug](https://img.shields.io/badge/Pug-e7e7e7.svg)
+![SASS](https://img.shields.io/badge/SASS-3498db.svg)
+
 ## Synopsis
 
 Cloning Youtube with Vanilla with NodeJS.
@@ -19,15 +30,6 @@ Cloning Youtube with Vanilla with NodeJS.
 -   [x] Video Detail
 -   [x] Edit Video
 
-## Installation
-
-1. `git clone https://github.com/kneeprayer/kakao-clone-handson.git`
-2. `yarn install`
-
-## How to use it
-
--   For developent mode using nodemon and babel server : `yarn start`
-
 ## Gitpod
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/kneeprayer/wetube-handson)
@@ -39,8 +41,14 @@ Cloning Youtube with Vanilla with NodeJS.
 2. `cd`**somewhere**
 3. `mkdir`**somename** and `cd`**somename**
 4. `git clone https://github.com/kneeprayer/wetube-handson.git`
-5. For Mac and Linux user : `chmod 755 bin/*.sh`
-6. docker-compose up -d
+5. Change file name template.env to .env : `mv template.env .env`
+6. Setup AWS S3,Heroku,MongoDB Atlas and edit your information in .env : `vi .env`
+7. Install javascript modules. `yarn` or `npm install`
+8. For Mac and Linux user : `chmod 755 bin/*.sh`
+
+## How to use it
+
+-   For developent mode using nodemon and babel server : `yarn start`
 
 ## Container shell access
 
