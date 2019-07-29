@@ -141,7 +141,7 @@ function init() {
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRange.addEventListener("input", handleDrag);
   // videoPlayer.addEventListener("loadedmetadata", setTotalTime);
-  setInterval(setTotalTime, 500);
+  setInterval(setTotalTime, 1000);
 }
 
 if (videoContainer) {
